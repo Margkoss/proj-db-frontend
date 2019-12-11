@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/view/login/login.component';
 import { AdminComponent } from './components/view/admin-views/admin/admin.component';
 import { AdminCandidateComponent } from './components/view/admin-views/candidate/candidate.component';
-import { RecruiterComponent } from './components/view/admin-views/recruiter/recruiter.component';
+import { AdminRecruiterComponent } from './components/view/admin-views/recruiter/recruiter.component';
 import { HistoryComponent } from './components/view/admin-views/history/history.component';
 import { ItemsComponent } from './components/view/admin-views/items/items.component';
 import { CompaniesComponent } from './components/view/admin-views/companies/companies.component';
@@ -11,12 +11,17 @@ import { CandidateComponent } from './components/view/candidate-views/candidate/
 import { ProfileComponent } from './components/view/candidate-views/profile/profile.component';
 import { ReviewComponent } from './components/view/candidate-views/review/review.component';
 import { ApplyComponent } from './components/view/candidate-views/apply/apply.component';
+import { RecruiterComponent } from './components/view/recruiter-views/recruiter/recruiter.component';
+import { RecruiterProfileComponent } from './components/view/recruiter-views/recruiter-profile/recruiter-profile.component';
+import { RecruiterCompanyComponent } from './components/view/recruiter-views/recruiter-company/recruiter-company.component';
+import { JobsComponent } from './components/view/recruiter-views/jobs/jobs.component';
+import { RecruiterCompanyJobsComponent } from './components/view/recruiter-views/recruiter-company-jobs/recruiter-company-jobs.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "admin", component: AdminComponent, children: [
     {path:"", redirectTo:"recruiter", pathMatch: "full"},
-    {path: "recruiter" ,component: RecruiterComponent},
+    {path: "recruiter" ,component: AdminRecruiterComponent},
     {path: "candidate" ,component: AdminCandidateComponent},
     {path: "history" ,component: HistoryComponent},
     {path: "items" ,component: ItemsComponent},
@@ -26,6 +31,12 @@ const routes: Routes = [
     {path: "profile" ,component: ProfileComponent},
     {path: "apply" ,component: ApplyComponent},
     {path: "review" ,component: ReviewComponent},
+  ]},
+  {path: "recruiter", component: RecruiterComponent, children: [
+    {path: "profile", component: RecruiterProfileComponent},
+    {path: "company", component: RecruiterCompanyComponent},
+    {path: "added-jobs", component: JobsComponent},
+    {path: "company-jobs", component: RecruiterCompanyJobsComponent}
   ]}
 ];
 

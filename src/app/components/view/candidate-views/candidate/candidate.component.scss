@@ -1,7 +1,14 @@
 .container-fluid{
     background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background-size: 1000% 1000%;
+    animation: bgAnimation 30s ease infinite;
     height: 100vh;
     position: fixed;
+}
+@keyframes bgAnimation {
+    0%{background-position:0% 99%}
+    50%{background-position:100% 2%}
+    100%{background-position:0% 99%}
 }
 
 .main{

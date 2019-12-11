@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="main">
+            <h1>Recruiter Dashboard</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" routerLink="./">Actions</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="./profile" routerLinkActive="active">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="./company" routerLinkActive="active">Edit my Company</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="./added-jobs" routerLinkActive="active">Edit my jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="./company-jobs" routerLinkActive="active">View all jobs</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
