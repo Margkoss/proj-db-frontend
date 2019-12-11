@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap stylesheet -->
+    <title>E-recruit</title>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm logo text-center">
+                        <h1>E-recruit</h1>
+                </div>
+                <div class="col-sm sign-in">
+                    <div class="signup-form">
+                        <div class="form-group">
+                            <label for="email">Username</label>
+                            <input type="text" class="form-control" [(ngModel)]="username" placeholder="Enter Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" (keyup.enter)="login()" [(ngModel)]="password" placeholder="Enter password">
+                        </div>
+                        <div class="form-group d-flex justify-content-center">
+                            <button id="submit" type="submit" class="btn btn-primary" (click)="login()">Log in</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

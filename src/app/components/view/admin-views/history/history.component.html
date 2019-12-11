@@ -1,0 +1,48 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="../recruiter">Recruiter</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="../candidate">Candidate</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="../items">Field</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="../company">Add Company to Fields</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="./">History</a>
+    </li>
+</ul>
+<div class="input-group mb-3 row">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Usernames</label>
+    </div>
+    <select class="custom-select" id="inputGroupSelect01">
+        <option selected>All</option>
+        <option *ngFor="let username of users">{{username}}</option>
+    </select>
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Tables</label>
+    </div>
+    <select class="custom-select" id="inputGroupSelect01">
+        <option selected>All</option>
+        <option *ngFor="let table of tables">{{table}}</option>
+    </select>
+</div>
+<div class="history-stuff" *ngFor="let tableRow of tableRows">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">History item ID: {{ tableRow.hid }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{tableRow.username}}</h6>
+            <p>Info:</p>
+            <ul>
+                <li>Date: {{tableRow.on_date}}</li>
+                <li>Succes code: {{tableRow.success}}</li>
+                <li>Action: {{tableRow.action}}</li>
+                <li>Table: {{tableRow.table}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
