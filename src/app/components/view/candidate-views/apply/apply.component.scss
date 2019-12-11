@@ -6,10 +6,7 @@
         .card-title{
             display: flex;
             justify-content: space-between;
-        }
-
-        .card-subtitle{
-            margin-bottom: 30px;
+            align-items: center;
         }
 
         padding: 30px;
@@ -18,6 +15,16 @@
         
         &:hover{
             box-shadow:0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .application-card{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .delete-btn{
+            display: flex;
+            flex-direction: row-reverse;
         }
 
     }

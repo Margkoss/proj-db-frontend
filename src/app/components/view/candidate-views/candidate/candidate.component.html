@@ -3,33 +3,27 @@
         <div class="main">
             <h1>Hello {{user.username}}</h1>
             <div class="card">
-                <div class="card-title">{{user.username + " " + user.surname + "'s"}} Profile</div>
+                <div class="card-title"><h5>{{user.username + " " + user.surname + "'s"}} Profile</h5></div>
                 <div class="card-subtitle text-muted">Info: </div>
                 <div class="card-body">
                     <ul>
                         <li>Username: {{user.username}}</li>
-                        <li>Firstname: {{user.firstname}}</li>
-                        <li>Lastname: {{user.lastname}}</li>
+                        <li>Firstname: {{user.name}}</li>
+                        <li>Lastname: {{user.surname}}</li>
                         <li>Registration: {{user.reg_date}}</li>
                         <li>Email: {{user.email}}</li>
                         <li>Bio: {{user.bio}}</li>
-                        <li>Sistatikes: {{user.Sistatikes}}</li>
+                        <li>Sistatikes: {{user.sistatikes}}</li>
                         <li>Certificates: {{user.certificates}}</li>
                     </ul>
                     <div class="actions">
-                        <a class="btn btn-primary" href="#"  data-toggle="modal" data-target="#exampleModal">Edit Profile</a>
-                        <a class="btn btn-primary" href="#">Apply</a>
-                        <a href="#" class="btn btn-primary">Review applications</a>
+                        <a class="btn btn-primary" routerLink="./profile" routerLinkActive="btn-warning">Edit Profile</a>
+                        <a class="btn btn-primary" routerLink="./apply" routerLinkActive="btn-warning">Apply</a>
+                        <a class="btn btn-primary" routerLink="./review" routerLinkActive="btn-warning">Review applications</a>
                     </div>
                 </div>
             </div>
+            <router-outlet></router-outlet>
         </div>
-    </div>
-</div>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <router-outlet></router-outlet>
     </div>
 </div>

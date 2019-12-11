@@ -9,7 +9,8 @@ import { ItemsComponent } from './components/view/admin-views/items/items.compon
 import { CompaniesComponent } from './components/view/admin-views/companies/companies.component';
 import { CandidateComponent } from './components/view/candidate-views/candidate/candidate.component';
 import { ProfileComponent } from './components/view/candidate-views/profile/profile.component';
-
+import { ReviewComponent } from './components/view/candidate-views/review/review.component';
+import { ApplyComponent } from './components/view/candidate-views/apply/apply.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -22,8 +23,9 @@ const routes: Routes = [
     {path: "company" ,component: CompaniesComponent},
   ]},
   {path: "candidate", component:CandidateComponent, children: [
-    {path: "", redirectTo: "profile", pathMatch:"full"},
     {path: "profile" ,component: ProfileComponent},
+    {path: "apply" ,component: ApplyComponent},
+    {path: "review" ,component: ReviewComponent},
   ]}
 ];
 

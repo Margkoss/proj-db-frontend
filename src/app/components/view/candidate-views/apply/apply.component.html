@@ -1,0 +1,34 @@
+<div class="content">
+    <div class="card">
+        <div class="card-title row">
+            <h5>Apply to positions</h5>
+            <a routerLink="../" class="btn btn-danger">Go back to profile</a>
+        </div>
+        <div class="card-body">
+            <div class="card" *ngFor="let job of jobs">
+                <div class="card-title">
+                    <h3>{{job.position}}</h3>
+                    <div>
+                        <p class="text-muted">at</p>
+                        <h6>{{job.edra}}</h6>
+                    </div>
+                    <div>
+                        <p class="text-muted">with salary</p>
+                        <h6>{{job.salary}}</h6>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-body application-card">
+                    <p class="text-muted">Start date:</p>
+                    <h6>{{job.start_date}}</h6>
+                    <p class="text-muted">Status:</p>
+                    <h6>{{job.status}}</h6>
+                </div>
+                <div class="delete-btn">
+                    <button class="btn btn-success">Apply to this job</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

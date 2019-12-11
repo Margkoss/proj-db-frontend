@@ -14,7 +14,9 @@ import { ItemsComponent } from './components/view/admin-views/items/items.compon
 import { CompaniesComponent } from './components/view/admin-views/companies/companies.component';
 import { HistoryComponent } from './components/view/admin-views/history/history.component';
 import { ProfileComponent } from './components/view/candidate-views/profile/profile.component';
-import { CandidateComponent } from './components/view/candidate-views/candidate/candidate.component'
+import { CandidateComponent } from './components/view/candidate-views/candidate/candidate.component';
+import { ReviewComponent } from './components/view/candidate-views/review/review.component';
+import { ApplyComponent } from './components/view/candidate-views/apply/apply.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CandidateComponent } from './components/view/candidate-views/candidate/
     ItemsComponent,
     CompaniesComponent,
     HistoryComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReviewComponent,
+    ApplyComponent,
   ],
   imports: [
     BrowserModule,
