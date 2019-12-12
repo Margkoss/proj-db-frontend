@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,8 @@ import { RecruiterComponent } from './components/view/recruiter-views/recruiter/
 import { RecruiterProfileComponent } from './components/view/recruiter-views/recruiter-profile/recruiter-profile.component';
 import { RecruiterCompanyComponent } from './components/view/recruiter-views/recruiter-company/recruiter-company.component';
 import { JobsComponent } from './components/view/recruiter-views/jobs/jobs.component';
-import { RecruiterCompanyJobsComponent } from './components/view/recruiter-views/recruiter-company-jobs/recruiter-company-jobs.component'
+import { RecruiterCompanyJobsComponent } from './components/view/recruiter-views/recruiter-company-jobs/recruiter-company-jobs.component';
+
 
 @NgModule({
   declarations: [
@@ -41,12 +43,13 @@ import { RecruiterCompanyJobsComponent } from './components/view/recruiter-views
     RecruiterProfileComponent,
     RecruiterCompanyComponent,
     JobsComponent,
-    RecruiterCompanyJobsComponent
+    RecruiterCompanyJobsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

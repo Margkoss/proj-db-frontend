@@ -1,1 +1,24 @@
-<p>recruiter-company-jobs works!</p>
+<div class="card">
+    <div class="card-title">
+        <h3>All of your company's jobs</h3>
+        <p>Here you can view all of your company's jobs. If you want to edit <strong>your</strong> jobs go to edit my jobs</p>
+        <hr>
+    </div>
+    <div class="card-body">
+        <div class="card" *ngFor="let job of myjobs">
+            <div class="card-my-title">
+                <div>
+                    <h5>{{job.position}}</h5>
+                </div>
+                <div>
+                    <p class="tex-muted">at</p>
+                    <h5>{{job.edra}}</h5>
+                </div>
+                <div>
+                    <p class="tex-muted">with salary</p>
+                    <h5>{{job.salary}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

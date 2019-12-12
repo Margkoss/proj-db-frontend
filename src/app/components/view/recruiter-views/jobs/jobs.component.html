@@ -1,6 +1,111 @@
 <div class="card">
     <div class="card-title">
+        <h5>Add a new Job</h5>
+        <p class="text-muted">Add a new job position to the system</p>
+        <hr>
+    </div>
+    <a class="btn btn-success" (click)="changeClass('add-job-form')">Add a new job</a>
+    <div class="hidden" id="add-job-form">
+        <div class="card">
+            <div class="card-title">
+                <h5>Add a new job</h5>
+                <p class="text-muted">Add a new job by entering all of the fields</p>
+                <hr>
+            </div>
+            <form [formGroup]="newJobForm" (ngSubmit)="submitNewJob(newJobForm.value)">
+                <div class="form-group">
+                    <label for="start-date">Start date</label>
+                    <input type="text" class="form-control" formControlName="start_date" placeholder="Enter start date">
+                </div>
+                <div class="form-group">
+                    <label for="salary">Salary</label>
+                    <input type="text" class="form-control" formControlName="salary" placeholder="Enter salary">
+                </div>
+                <div class="form-group">
+                    <label for="position">Position</label>
+                    <input type="text" class="form-control" formControlName="position" placeholder="Enter position">
+                </div>
+                <div class="form-group">
+                    <label for="edra">Edra</label>
+                    <input type="text" class="form-control" formControlName="edra" placeholder="Enter edra">
+                </div>
+                <div class="form-group">
+                    <label for="submission_date">Submission date</label>
+                    <input type="text" class="form-control" formControlName="submission_date" placeholder="Enter submission date">
+                </div>
+                <div class="form-group">
+                    <label for="field titles">Field titles</label>
+                    <input type="text" class="form-control" formControlName="requires" placeholder="Enter field titles">
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">
         <h5>Edit my jobs</h5>
         <p class="text-muted">You can edit all of the jobs you've added to your company</p>
+    </div>
+    <div class="card-body">
+        <div class="card" *ngFor="let job of myjobs">
+            <div class="card-my-title">
+                <div>
+                    <h3>{{job.position}}</h3>
+                </div>
+                <div>
+                    <p class="text-muted">at</p>
+                    {{job.edra}}
+                </div>
+                <div>
+                    <p class="text-muted">salary</p>
+                    {{job.salary}}
+                </div>
+            </div>
+            <hr>
+            <div class="card-my-title">
+                <div>
+                    <h5>Actions:</h5>
+                    <p class="text-muted">You cannot change id and submission date</p>
+                </div>
+                <button class="btn btn-primary" (click)="changeClass('job-'+job.id)">Change Job Info</button>
+            </div>
+            <div class="card" id="job-{{job.id}}" class="hidden">
+                <div class="card-title">
+                    <h5>Edit job: {{job.id}}</h5>
+                    <p class="text-muted">You cannot edit the id and the submission date of the job</p>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="changeJobForm" (ngSubmit)="onSubmit(changeJobForm.value, job)">
+                        <div class="form-group">
+                            <label for="start_date">Start date</label>
+                            <input type="text" class="form-control" placeholder="Enter start date" formControlName="start_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="salary">Salary</label>
+                            <input type="text" class="form-control" placeholder="Enter salary" formControlName="salary">
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Position</label>
+                            <input type="text" class="form-control" placeholder="Enter position" formControlName="position">
+                        </div>
+                        <div class="form-group">
+                            <label for="edra">Edra</label>
+                            <input type="text" class="form-control" placeholder="Enter edra" formControlName="edra">
+                        </div>
+                        <div class="form-group">
+                            <label for="field titles">Field titles</label>
+                            <input type="text" class="form-control"  placeholder="Enter field titles" formControlName="requires">
+                        </div>
+                        <div class="form-group d-flex justify-content-center">
+                            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
