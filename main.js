@@ -11,7 +11,8 @@ function createWindow () {
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'dist/db-proj-frontend/index.html'),
     protocol: 'file:',
-    slashes: true
+    slashes: true,
+    icon:path.join(__dirname, 'database.svg')
   }))
 
   // Open the DevTools optionally:
