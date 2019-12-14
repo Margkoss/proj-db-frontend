@@ -15,23 +15,23 @@
         <a class="nav-link active" routerLink="./">History</a>
     </li>
 </ul>
-<div class="input-group mb-3 row">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Usernames</label>
-    </div>
-    <select class="custom-select" id="inputGroupSelect01">
-        <option selected>All</option>
-        <option *ngFor="let username of users">{{username}}</option>
-    </select>
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Tables</label>
-    </div>
-    <select class="custom-select" id="inputGroupSelect01">
-        <option selected>All</option>
-        <option *ngFor="let table of tables">{{table}}</option>
-    </select>
-    <button class="btn btn-primary">Filter</button>
-</div>
+    <form class="input-group mb-3 row" [formGroup]="history" (ngSubmit)="changeHistory(history.value)">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Usernames</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" formControlName="username">
+            <option selected>All</option>
+            <option *ngFor="let username of users">{{username}}</option>
+        </select>
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Tables</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" formControlName="table">
+            <option selected>All</option>
+            <option *ngFor="let table of tables">{{table}}</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
 <div class="history-stuff" *ngFor="let tableRow of tableRows">
     <div class="card">
         <div class="card-body">
@@ -42,7 +42,7 @@
                 <li>Date: {{tableRow.on_date}}</li>
                 <li>Succes code: {{tableRow.success}}</li>
                 <li>Action: {{tableRow.action}}</li>
-                <li>Table: {{tableRow.table}}</li>
+                <li>Table: {{tableRow.on_table}}</li>
             </ul>
         </div>
     </div>

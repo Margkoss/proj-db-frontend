@@ -43,7 +43,7 @@ export class JobsComponent implements OnInit {
       "announce_date": "25/12/0001",
       "submission_date": "25/12/0030",
       "requires": ["Chemistry", "Math"],
-      "status": "pending"
+      "status": "pending",
       },
       {
         "id": 2, 

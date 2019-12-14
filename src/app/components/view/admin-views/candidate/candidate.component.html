@@ -17,62 +17,64 @@
     </li>
 </ul>
 
-<div class="add-recruiter">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" [(ngModel)]="username" placeholder="Enter username">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" (keyup.enter)="login()" [(ngModel)]="password" placeholder="Enter password">
-    </div>
-    <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input type="text" class="form-control" [(ngModel)]="firstname" placeholder="Enter first name">
-    </div>
-    <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" [(ngModel)]="lastname" placeholder="Enter last name">
+<div class="add-candidate">
+    <form [formGroup]="addCandidate" (ngSubmit)="addNewCandidate(addCandidate.value)">
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" formControlName="username" placeholder="Enter username">
         </div>
-    <div class="form-group">
-        <label for="firstname">Email</label>
-        <input type="text" class="form-control" [(ngModel)]="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-        <label for="bio">Bio</label>
-        <input type="text" class="form-control" [(ngModel)]="bio" placeholder="Enter bio">
-    </div>
-    <div class="form-group">
-        <label for="recommendation">Recommendations</label>
-        <input type="text" class="form-control" [(ngModel)]="recommendation" placeholder="Enter recommendations">
-    </div>
-    <div class="form-group">
-        <label for="certificates">Certificates</label>
-        <input type="text" class="form-control" [(ngModel)]="certificates" placeholder="Enter Certificates">
-    </div>
-    <label for="select-languages">Languages</label>
-    <select class="custom-select" id="select-languages">
-        <option selected>Languages</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <label for="select-languages">Degrees</label>
-    <select class="custom-select">
-        <option selected>Degrees</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <div class="form-group">
-        <label for="prTitle">Project Description</label>
-        <input type="text" class="form-control" [(ngModel)]="desc" placeholder="Enter Project description">
-    </div>
-    <div class="form-group">
-        <label for="url">Project Url</label>
-        <input type="text" class="form-control" [(ngModel)]="url" placeholder="Enter Project url">
-    </div>
-    <div class="form-group d-flex justify-content-center">
-        <button id="submit" type="submit" class="btn btn-primary" (click)="login()">Submit</button>
-    </div>
-    
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" formControlName="firstname" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" formControlName="lastname" placeholder="Enter last name">
+            </div>
+        <div class="form-group">
+            <label for="firstname">Email</label>
+            <input type="text" class="form-control" formControlName="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="bio">Bio</label>
+            <input type="text" class="form-control" formControlName="bio" placeholder="Enter bio">
+        </div>
+        <div class="form-group">
+            <label for="recommendation">Recommendations</label>
+            <input type="text" class="form-control" formControlName="recommendation" placeholder="Enter recommendations">
+        </div>
+        <div class="form-group">
+            <label for="certificates">Certificates</label>
+            <input type="text" class="form-control" formControlName="certificates" placeholder="Enter Certificates">
+        </div>
+        <label for="select-languages">Languages</label>
+        <select class="custom-select" id="select-languages" formControlName="languages">
+            <option selected>Languages</option>
+            <option value="EN">English</option>
+            <option value="SP">Spanish</option>
+            <option value="GR">Greek</option>
+            <option value="FR">French</option>
+        </select>
+        <label for="select-degree">Degree</label>
+        <select class="custom-select" id="select-degree" formControlName="degree">
+            <option selected>Degree</option>
+            <option *ngFor="let degree of degrees" value="{{degree}}">{{degree}}</option>
+        </select>
+        <div class="form-group">
+            <label for="prTitle">Project Description</label>
+            <input type="text" class="form-control" formControlName="description" placeholder="Enter Project description">
+        </div>
+        <div class="form-group">
+            <label for="url">Project Url</label>
+            <input type="text" class="form-control" formControlName="url" placeholder="Enter Project url">
+        </div>
+        <div class="form-group d-flex justify-content-center">
+            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        
+    </form>
