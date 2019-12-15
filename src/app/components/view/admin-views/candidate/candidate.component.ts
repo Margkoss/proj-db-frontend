@@ -28,6 +28,8 @@ export class AdminCandidateComponent implements OnInit {
         certificates: '',
         languages:'',
         degree:'',
+        graduation: '',
+        grade: '',
         url:'',
         description:''
     })
