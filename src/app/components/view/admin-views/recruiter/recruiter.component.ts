@@ -17,7 +17,8 @@ export class AdminRecruiterComponent implements OnInit {
       firstname: '',
       lastname: '',
       email: '',
-      experience: ''
+      experience: '',
+      firm: ''
     })
   }
 

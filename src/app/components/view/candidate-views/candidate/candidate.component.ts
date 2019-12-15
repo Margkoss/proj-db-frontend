@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CandidateService } from 'src/app/services/candidate/candidate.service';
+import { forkJoin } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-candidate',
@@ -7,21 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateComponent implements OnInit {
 
-  private user = {
-    "username": "Markos",
-    "name": "Markos",
-    "surname": "Stamatakis",
-    "reg_date": "12/10/1964",
-    "email": "markos@markos.com",
-    "bio": "my-bio.pdf",
-    "sistatikes": "sistatikes.pdf",
-    "certificates": "EN EEXO"
+  private user;
+  private queryParams;
+
+
+  constructor(private candidate: CandidateService, private auth: AuthService, private router: Router) { 
   }
-
-
-  constructor() { }
 
   ngOnInit() {
+    this.candidate.getProfile().subscribe((data:any) => {
+      this.user = data;
+    });
   }
 
+
+  private logout(){
+    this.auth.logout();
+    this.router.navigate(["/"])
+  }
 }

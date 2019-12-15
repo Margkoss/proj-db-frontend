@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CandidateService } from 'src/app/services/candidate/candidate.service';
 
 @Component({
   selector: 'app-apply',
@@ -7,36 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplyComponent implements OnInit {
 
-  private jobs = [
-    {
-      "id": 1,
-      "start_date": "12/2/2013",
-      "salary": 3000,
-      "position": "Lector",
-      "edra": "Panepistimio Patron",
-      "recruiter": "Babis", // recruiter username
-      "announce_date": "10/12/2004",
-      "submission_date": "10/12/2009",
-      "status": "pending",
-      "message": "Ola kalaaaaa"
-    },
-    {
-      "id": 2,
-      "start_date": "12/2/2013",
-      "salary": 3000,
-      "position": "Mentor",
-      "edra": "Panepistimio Peloponisu",
-      "recruiter": "Babis", // recruiter username
-      "announce_date": "10/12/2004",
-      "submission_date": "10/12/2009",
-      "status": "pending",
-      "message": "Ola kalaaaaa"
-    }
-  ]  
+  private jobs;
 
-  constructor() { }
+  constructor(private candidate: CandidateService) { }
 
   ngOnInit() {
+    this.getJobs();
   }
 
+  getJobs(){
+    this.candidate.getUnuppliedJobs().subscribe((data:any) => {
+      console.log(data)
+      this.jobs = data;
+    });
+  }
+
+  apply(id){
+    this.candidate.applyToJob(id).subscribe((data:any) => {
+      alert(`Applied to job ${data}`);
+      this.getJobs();
+    }, (err: any) => {
+      alert(err.message)
+    });
+  }
 }

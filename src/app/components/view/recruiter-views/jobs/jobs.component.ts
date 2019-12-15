@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { RecruiterService } from 'src/app/services/recruiter/recruiter.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class JobsComponent implements OnInit {
   private newJobForm;
 
 
-  constructor(private formBuilder:FormBuilder) { 
+  constructor(private formBuilder:FormBuilder, private recruiter: RecruiterService, private router: Router) { 
     this.changeJobForm = this.formBuilder.group({
       start_date: '',
       salary: '',
@@ -28,36 +30,10 @@ export class JobsComponent implements OnInit {
       position: '',
       edra: '',
       requires: '',
-      submission_date: ''
     });
   }
 
-  private myjobs = [
-      {
-      "id": 1, 
-      "start_date": "15/12/12",
-      "salary": 3000,
-      "position": "Mentor",
-      "edra": "Panepistimio peloponisu",
-      "recruiter": "Markos",
-      "announce_date": "25/12/0001",
-      "submission_date": "25/12/0030",
-      "requires": ["Chemistry", "Math"],
-      "status": "pending",
-      },
-      {
-        "id": 2, 
-        "start_date": "15/12/12",
-        "salary": 5000,
-        "position": "Lector",
-        "edra": "Panepistimio Patron",
-        "recruiter": "Markos",
-        "announce_date": "25/12/0001",
-        "submission_date": "25/12/0030",
-        "requires": ["Chemistry", "Math", "CS"],
-        "status": "pending"
-      },
-  ]
+  private myjobs;
 
   changeClass(id){
     let classes = document.getElementById(id).classList;
@@ -70,17 +46,34 @@ export class JobsComponent implements OnInit {
     }
   }
 
-  onSubmit(value, job){
-    console.log(value, job);
-    this.changeJobForm.reset();
+  change(value, job){
+    value['start_date'] = new Date(value.start_date)
+    value['submission_date'] = Date.now(),
+    value['requires'] = value.requires.split(',');
+    this.recruiter.updateJob(job.id, value).subscribe((data:any) => {
+      alert(`Changed`);
+      this.router.navigate(["../"])
+    },(err:any) => {
+      alert(`There was an error: ${err.message}`)
+    });
   }
 
   submitNewJob(value){
-    console.log(value);
-    this.newJobForm.reset();
+    value['start_date'] = new Date(value.start_date)
+    value['submission_date'] = Date.now(),
+    value['requires'] = value.requires.split(',');
+    this.recruiter.addJob(value).subscribe((data:any) => {
+      alert(`added`);
+      this.router.navigate(["../"])
+    },(err:any) => {
+      alert(`There was an error: ${err.message}`)
+    });
   }
 
   ngOnInit() {
+    this.recruiter.getJobsByRecruiter().subscribe((data:any) => {
+      this.myjobs = data;
+    });
   }
 
 }

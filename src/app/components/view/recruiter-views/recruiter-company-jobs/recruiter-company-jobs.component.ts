@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecruiterService } from 'src/app/services/recruiter/recruiter.service';
 
 @Component({
   selector: 'app-recruiter-company-jobs',
@@ -7,38 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruiterCompanyJobsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recruiter: RecruiterService) { }
 
 
-  private myjobs = [
-    {
-    "id": 1, 
-    "start_date": "15/12/12",
-    "salary": 3000,
-    "position": "Mentor",
-    "edra": "Panepistimio peloponisu",
-    "recruiter": "Markos",
-    "announce_date": "25/12/0001",
-    "submission_date": "25/12/0030",
-    "requires": ["Chemistry", "Math"],
-    "status": "pending"
-    },
-    {
-      "id": 2, 
-      "start_date": "15/12/12",
-      "salary": 5000,
-      "position": "Lector",
-      "edra": "Panepistimio Patron",
-      "recruiter": "Markos",
-      "announce_date": "25/12/0001",
-      "submission_date": "25/12/0030",
-      "requires": ["Chemistry", "Math", "CS"],
-      "status": "pending"
-    },
-]
+  private myjobs;
 
 
   ngOnInit() {
+    this.recruiter.getJobsByRecruiterEtairia().subscribe((data:any) => {this.myjobs = data})
   }
 
 }

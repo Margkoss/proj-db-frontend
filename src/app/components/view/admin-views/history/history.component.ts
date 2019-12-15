@@ -37,8 +37,7 @@ export class HistoryComponent implements OnInit {
 
   changeHistory(value){
     this.admin.getHistory(value).subscribe((data:any) => {
-      // this.tableRows = data
-      console.log(data)
+      this.tableRows = data
     });
   }
 }
