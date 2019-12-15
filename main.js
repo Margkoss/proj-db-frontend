@@ -12,7 +12,7 @@ function createWindow () {
     pathname: path.join(__dirname, 'dist/db-proj-frontend/index.html'),
     protocol: 'file:',
     slashes: true,
-    icon:path.join(__dirname, 'database.svg')
+    icon:path.join(__dirname, 'database.png')
   }))
 
   // Open the DevTools optionally:
