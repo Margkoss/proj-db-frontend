@@ -4,24 +4,26 @@
         <p class="text-muted">You can change all of the fields except ΑΦΜ, ΔΟΥ, and name</p>
     </div>
     <div class="card-body">
-        <div class="form-group">
-            <label for="tel">Telephone</label>
-            <input type="text" class="form-control" (keyup.enter)="login()" [(ngModel)]="tel" placeholder="Enter telephone no">
-        </div>
-        <div class="form-group">
-            <label for="street">Street</label>
-            <input type="text" class="form-control" (keyup.enter)="login()" [(ngModel)]="street" placeholder="Enter street">
-        </div>
-        <div class="form-group">
-            <label for="number">Number</label>
-            <input type="text" class="form-control" (keyup.enter)="login()" [(ngModel)]="num" placeholder="Enter number">
-        </div>
-        <div class="form-group">
-            <label for="country">Country</label>
-            <input type="text" class="form-control" (keyup.enter)="login()" [(ngModel)]="country" placeholder="Enter country">
-        </div>
-        <div class="form-group d-flex justify-content-center">
-            <button id="submit" type="submit" class="btn btn-primary" (click)="login()">Submit</button>
-        </div>
+        <form [formGroup]="updateCompanyForm" (ngSubmit)="updateCompany(updateCompanyForm.value)">
+            <div class="form-group">
+                <label for="tel">Telephone</label>
+                <input type="text" class="form-control" formControlName="tel" placeholder="Enter telephone no">
+            </div>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" formControlName="street" placeholder="Enter street">
+            </div>
+            <div class="form-group">
+                <label for="number">Number</label>
+                <input type="text" class="form-control" formControlName="num" placeholder="Enter number">
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" class="form-control" formControlName="country" placeholder="Enter country">
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
     </div>
 </div>

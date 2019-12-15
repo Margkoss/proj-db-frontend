@@ -4,28 +4,31 @@
         <p class="text-muted">Username editing not available</p>
     </div>
     <div class="card-body">
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" (keyup.enter)="login()" [(ngModel)]="password" placeholder="Enter password">
-        </div>
-        <div class="form-group">
-            <label for="firstname">First Name</label>
-            <input type="text" class="form-control" [(ngModel)]="firstname" placeholder="Enter first name">
-        </div>
-        <div class="form-group">
-                <label for="lastname">Last Name</label>
-                <input type="text" class="form-control" [(ngModel)]="lastname" placeholder="Enter last name">
+        <form [formGroup]="updateProfile" (ngSubmit)="newProfile(updateProfile.value)">
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
             </div>
-        <div class="form-group">
-            <label for="firstname">Email</label>
-            <input type="text" class="form-control" [(ngModel)]="email" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-            <label for="experience">Experience</label>
-            <input type="text" class="form-control" [(ngModel)]="experience" placeholder="Enter experience">
-        </div>
-        <div class="form-group d-flex justify-content-center">
-            <button id="submit" type="submit" class="btn btn-primary" (click)="login()">Submit</button>
-        </div>
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter first name">
+            </div>
+            <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" formControlName="surname" placeholder="Enter last name">
+                </div>
+            <div class="form-group">
+                <label for="firstname">Email</label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience</label>
+                <input type="text" class="form-control" formControlName="exp_years" placeholder="Enter experience">
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
     </div>
 </div>

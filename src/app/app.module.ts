@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -23,6 +24,10 @@ import { RecruiterProfileComponent } from './components/view/recruiter-views/rec
 import { RecruiterCompanyComponent } from './components/view/recruiter-views/recruiter-company/recruiter-company.component';
 import { JobsComponent } from './components/view/recruiter-views/jobs/jobs.component';
 import { RecruiterCompanyJobsComponent } from './components/view/recruiter-views/recruiter-company-jobs/recruiter-company-jobs.component';
+
+import { AdminService } from './services/admin/admin.service';
+import { AuthGuard } from './guards/auth.guard';
+import { TokenInteceptorService } from './services/token/token-inteceptor.service';
 
 
 @NgModule({
@@ -49,9 +54,14 @@ import { RecruiterCompanyJobsComponent } from './components/view/recruiter-views
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AdminService, AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInteceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

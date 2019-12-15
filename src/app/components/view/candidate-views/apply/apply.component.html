@@ -24,8 +24,8 @@
                     <p class="text-muted">Status:</p>
                     <h6>{{job.status}}</h6>
                 </div>
-                <div class="delete-btn">
-                    <button class="btn btn-success">Apply to this job</button>
+                <div class="apply-btn">
+                    <button class="btn btn-success" (click)="apply(job.id)">Apply to this job</button>
                 </div>
             </div>
         </div>

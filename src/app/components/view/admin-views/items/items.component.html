@@ -16,25 +16,25 @@
         <a class="nav-link" routerLink="../history">History</a>
     </li>
 </ul>
-<div class="add-recruiter">
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter title">
-    </div>
-    <div class="form-group">
-        <label for="desc">Description</label>
-        <input type="text" class="form-control" [(ngModel)]="description" placeholder="Enter description">
-    </div>
-    <label for="select-field">Select Parent field</label>
-    <select class="custom-select">
-        <option selected>Parent field</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <br>
-    <br>
-    <div class="form-group d-flex justify-content-center">
-        <button id="submit" type="submit" class="btn btn-primary" (click)="login()">Submit</button>
-    </div>
-    
+<div class="add-field">
+    <form [formGroup]="addField" (ngSubmit)="createField(addField.value)">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" formControlName="title" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <input type="text" class="form-control" formControlName="description" placeholder="Enter description">
+        </div>
+        <label for="select-field">Select Parent field</label>
+        <select class="custom-select" formControlName="belongs"> 
+            <option selected>Parent field</option>
+            <option *ngFor="let field of fields" value="{{field}}">{{field}}</option>
+        </select>
+        <br>
+        <br>
+        <div class="form-group d-flex justify-content-center">
+            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        
+    </form>
